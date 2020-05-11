@@ -1,0 +1,70 @@
+---
+    - name: backup | Install and configure backup server
+      hosts: backup
+      become: true
+      vars:
+        user: borg
+        group: borg
+        home: /home/borg
+    
+      tasks:
+
+        - name: install borgbackup
+          get_url:
+            url: https://github.com/borgbackup/borg/releases/download/1.1.11/borg-linux64
+            dest: /usr/bin/borg
+            owner: root
+            group: root
+            mode: '0755'
+
+        - name: add borg group
+          group:
+            name: "{{ group }}"
+            state: present
+
+        - name: add borg user
+          user:
+            name: "{{ user }}"
+            home: "{{ home }}"
+            createhome: yes
+            group: "{{ group }}"
+            state: present
+
+        - name: add ssh directory
+          file:
+            path: "{{ home }}/.ssh"
+            owner: "{{ user }}"
+            group: "{{ group }}"
+            mode: 0700
+            state: directory
+
+        - name: add ssh key
+          authorized_key:
+            user: "{{ user }}"
+            key: "{{ lookup('file', 'ssh/id_rsa.pub') }}"
+
+        - name: change owner of repository
+          file:
+            path: "{{ home }}"
+            owner: "{{ user }}"
+            group: "{{ user }}"
+            recurse: yes
+
+    - name: server | Install and configure server
+      hosts: server
+      become: true
+
+      tasks:
+        - name: get backup server pub key
+          command: "ssh-keyscan -H 192.168.11.151"
+          register: backupkey
+
+        - name: add backup server to known hosts
+          copy:
+            content: "{{ backupkey.stdout }}"
+            dest: /root/.ssh/known_hosts
+
+        - name: init backup repository
+          command: borg init -e none borg@192.168.11.151:server-etc/
+
+        

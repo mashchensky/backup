@@ -1,0 +1,42 @@
+---
+    - name: server | Install and configure server
+      hosts: server
+      become: true
+          
+      tasks:
+        
+        - name: install borgbackup
+          get_url:
+            url: https://github.com/borgbackup/borg/releases/download/1.1.11/borg-linux64
+            dest: /usr/bin/borg
+            owner: root
+            group: root
+            mode: '0755'
+
+        - name: add ssh directory
+          file:
+            path: /root/.ssh
+            state: directory
+
+        - name: generate keypair for ssh
+          openssh_keypair:
+            path: /root/.ssh/id_rsa
+
+        - name: fetch backup ssh-pubkey
+          fetch: 
+            src: /root/.ssh/id_rsa.pub
+            dest: ssh/
+            flat: yes
+
+
+        - name: copy backup script
+          copy:
+            src: backup-data.sh
+            dest: /home/vagrant/
+            mode: 0700
+
+        - name: add cron tasks
+          cron:
+            job: "/home/vagrant/backup-data.sh"
+            name: "backup /etc"
+            minute: "0"

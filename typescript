@@ -1,0 +1,22 @@
+Script started on 2020-05-11 15:30:29+0300
+]0;pavel@pavel-ubuntu: ~/otus/backup[01;32mpavel@pavel-ubuntu[00m:[01;34m~/otus/backup[00m$ exitvagrant ssh server
+Last login: Mon May 11 12:27:14 2020 from 10.0.2.2
+]0;vagrant@server:~[?1034h[vagrant@server ~]$ exitsudo -s
+]0;root@server:/home/vagrant[?1034h[root@server vagrant]# exitborg mount borg@192.168.11.151:server-etc::etc-2020-05-11__11:22:48 /tmp/backup/[A[Cmkdir /tmp/backup[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cborg list borg@192.168.11.151:server-etc
+etc-2020-05-11_12:14:32              Mon, 2020-05-11 12:14:34 [a5ce7d8aeed5ceb7af01343636ad46aa5655c904d81ac68db7edc2c15c300956]
+]0;root@server:/home/vagrant[root@server vagrant]# borg list borg@192.168.11.151:server-etc[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cexit[Kborg mount borg@192.168.11.151:server-etc::etc-2020-05-11__11:22:48 /tmp/backup/[A[Cmkdir /tmp/backup[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cbackupobackuprbackupgbackup
+]0;root@server:/home/vagrant[root@server vagrant]# mkdir /tmp/borgbackupborg list borg@192.168.11.151:server-etc[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cexit[Kborg mount borg@192.168.11.151:server-etc::etc-2020-05-11__11:22:48 /tmp/backup/[Cbackup/obackup/rbackup/gbackup/[C[1P /tmp/borgbackup/[C[C[C[C[C[C[C[C[1P /tmp/borgbackup/[C[C[C[C[C[C[C[1P /tmp/borgbackup/[C[C[C[C[C[C[1P /tmp/borgbackup/[C[C[C[C[C[1P /tmp/borgbackup/[C[C[C[C[1P /tmp/borgbackup/[C[C[C[1P /tmp/borgbackup/[C[C[1P /tmp/borgbackup/[C1 /tmp/borgbackup/[C[C2 /tmp/borgbackup/[C[C[C: /tmp/borgbackup/[C[C[C[C1 /tmp/borgbackup/[C[C[C[C[C4 /tmp/borgbackup/[C[C[C[C[C[C: /tmp/borgbackup/[C[C[C[C[C[C[C3 /tmp/borgbackup/[C[C[C[C[C[C[C[C2 /tmp/borgbackup/[C[C[C[C[C[C[C[C[C
+]0;root@server:/home/vagrant[root@server vagrant]# ll /tmp/borgbackup/
+total 0
+drwxr-xr-x. 1 root root 0 May 11 12:09 [0m[38;5;27metc[0m
+]0;root@server:/home/vagrant[root@server vagrant]# exit
+exit
+]0;vagrant@server:~[vagrant@server ~]$ exit
+logout
+Connection to 127.0.0.1 closed.
+]0;pavel@pavel-ubuntu: ~/otus/backup[01;32mpavel@pavel-ubuntu[00m:[01;34m~/otus/backup[00m$ exit
+exit
+
+Script done on 2020-05-11 15:31:47+0300
