@@ -1,0 +1,181 @@
+Script started on 2020-05-12 21:39:46+0300
+]0;pavel@pavel-ubuntu: ~/otus/backup[01;32mpavel@pavel-ubuntu[00m:[01;34m~/otus/backup[00m$ vagrant ssh serverup[Kssh serverup[K
+[0mBringing machine 'server' up with 'virtualbox' provider...[0m
+[0mBringing machine 'backup' up with 'virtualbox' provider...[0m
+[1m==> server: Importing base box 'centos/7'...[0m
+[0m[K[0m[0mProgress: 20%[0m[0m[K[0m[0mProgress: 40%[0m[0m[K[0m[0mProgress: 70%[0m[0m[K[0m[0mProgress: 90%[0m[0m[K[0m[1m==> server: Matching MAC address for NAT networking...[0m
+[1m==> server: Checking if box 'centos/7' version '1905.1' is up to date...[0m
+[1m==> server: Setting the name of the VM: backup_server_1589308804879_46394[0m
+[1m==> server: Clearing any previously set network interfaces...[0m
+[1m==> server: Preparing network interfaces based on configuration...[0m
+[0m    server: Adapter 1: nat[0m
+[0m    server: Adapter 2: hostonly[0m
+[1m==> server: Forwarding ports...[0m
+[0m    server: 22 (guest) => 2222 (host) (adapter 1)[0m
+[1m==> server: Running 'pre-boot' VM customizations...[0m
+[1m==> server: Booting VM...[0m
+[1m==> server: Waiting for machine to boot. This may take a few minutes...[0m
+[0m    server: SSH address: 127.0.0.1:2222[0m
+[0m    server: SSH username: vagrant[0m
+[0m    server: SSH auth method: private key[0m
+[0m    server: 
+    server: Vagrant insecure key detected. Vagrant will automatically replace
+    server: this with a newly generated keypair for better security.[0m
+[0m    server: 
+    server: Inserting generated public key within guest...[0m
+[0m    server: Removing insecure key from the guest if it's present...[0m
+[0m    server: Key inserted! Disconnecting and reconnecting using new SSH key...[0m
+[1m==> server: Machine booted and ready![0m
+[1m==> server: Checking for guest additions in VM...[0m
+[0m    server: No guest additions were detected on the base box for this VM! Guest
+    server: additions are required for forwarded ports, shared folders, host only
+    server: networking, and more. If SSH fails on this machine, please install
+    server: the guest additions and repackage the box to continue.
+    server: 
+    server: This is not an error message; everything may continue to work properly,
+    server: in which case you may ignore this message.[0m
+[1m==> server: Setting hostname...[0m
+[1m==> server: Configuring and enabling network interfaces...[0m
+[1m==> server: Rsyncing folder: /home/pavel/otus/backup/ => /vagrant[0m
+[1m==> server: Running provisioner: ansible...[0m
+[0;33mVagrant has automatically selected the compatibility mode '2.0'
+according to the Ansible version installed (2.9.7).
+
+Alternatively, the compatibility mode can be specified in your Vagrantfile:
+https://www.vagrantup.com/docs/provisioning/ansible_common.html#compatibility_mode
+[0m
+[0m    server: Running ansible-playbook...[0m
+[0m
+PLAY [server | Install and configure server] ***********************************
+[0m[0m
+TASK [Gathering Facts] *********************************************************
+[0m[0m[0;32mok: [server][0m
+[0m[0m
+TASK [install borgbackup] ******************************************************
+[0m[0m[0;33mchanged: [server][0m
+[0m[0m
+TASK [add ssh directory] *******************************************************
+[0m[0m[0;33mchanged: [server][0m
+[0m[0m
+TASK [generate keypair for ssh] ************************************************
+[0m[0m[0;33mchanged: [server][0m
+[0m[0m
+TASK [fetch backup ssh-pubkey] *************************************************
+[0m[0m[0;33mchanged: [server][0m
+[0m[0m
+TASK [copy backup script] ******************************************************
+[0m[0m[0;33mchanged: [server][0m
+[0m[0m
+TASK [add cron tasks] **********************************************************
+[0m[0m[0;33mchanged: [server][0m
+[0m[0m
+PLAY RECAP *********************************************************************
+[0m[0m[0;33mserver[0m                     : [0;32mok=7   [0m [0;33mchanged=6   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[0m[1m==> backup: Importing base box 'centos/7'...[0m
+[0m[K[0m[0mProgress: 20%[0m[0m[K[0m[0mProgress: 40%[0m[0m[K[0m[0mProgress: 70%[0m[0m[K[0m[0mProgress: 90%[0m[0m[K[0m[1m==> backup: Matching MAC address for NAT networking...[0m
+[1m==> backup: Checking if box 'centos/7' version '1905.1' is up to date...[0m
+[1m==> backup: Setting the name of the VM: backup_backup_1589308885657_49903[0m
+[1m==> backup: Fixed port collision for 22 => 2222. Now on port 2200.[0m
+[1m==> backup: Clearing any previously set network interfaces...[0m
+[1m==> backup: Preparing network interfaces based on configuration...[0m
+[0m    backup: Adapter 1: nat[0m
+[0m    backup: Adapter 2: hostonly[0m
+[1m==> backup: Forwarding ports...[0m
+[0m    backup: 22 (guest) => 2200 (host) (adapter 1)[0m
+[1m==> backup: Running 'pre-boot' VM customizations...[0m
+[1m==> backup: Booting VM...[0m
+[1m==> backup: Waiting for machine to boot. This may take a few minutes...[0m
+[0m    backup: SSH address: 127.0.0.1:2200[0m
+[0m    backup: SSH username: vagrant[0m
+[0m    backup: SSH auth method: private key[0m
+[0m    backup: 
+    backup: Vagrant insecure key detected. Vagrant will automatically replace
+    backup: this with a newly generated keypair for better security.[0m
+[0m    backup: 
+    backup: Inserting generated public key within guest...[0m
+[0m    backup: Removing insecure key from the guest if it's present...[0m
+[0m    backup: Key inserted! Disconnecting and reconnecting using new SSH key...[0m
+[1m==> backup: Machine booted and ready![0m
+[1m==> backup: Checking for guest additions in VM...[0m
+[0m    backup: No guest additions were detected on the base box for this VM! Guest
+    backup: additions are required for forwarded ports, shared folders, host only
+    backup: networking, and more. If SSH fails on this machine, please install
+    backup: the guest additions and repackage the box to continue.
+    backup: 
+    backup: This is not an error message; everything may continue to work properly,
+    backup: in which case you may ignore this message.[0m
+[1m==> backup: Setting hostname...[0m
+[1m==> backup: Configuring and enabling network interfaces...[0m
+[1m==> backup: Rsyncing folder: /home/pavel/otus/backup/ => /vagrant[0m
+[1m==> backup: Running provisioner: ansible...[0m
+[0;33mVagrant has automatically selected the compatibility mode '2.0'
+according to the Ansible version installed (2.9.7).
+
+Alternatively, the compatibility mode can be specified in your Vagrantfile:
+https://www.vagrantup.com/docs/provisioning/ansible_common.html#compatibility_mode
+[0m
+[0m    backup: Running ansible-playbook...[0m
+[0m
+PLAY [backup | Install and configure backup server] ****************************
+[0m[0m
+TASK [Gathering Facts] *********************************************************
+[0m[0m[0;32mok: [backup][0m
+[0m[0m
+TASK [install borgbackup] ******************************************************
+[0m[0m[0;33mchanged: [backup][0m
+[0m[0m
+TASK [add borg group] **********************************************************
+[0m[0m[0;33mchanged: [backup][0m
+[0m[0m
+TASK [add borg user] ***********************************************************
+[0m[0m[0;33mchanged: [backup][0m
+[0m[0m
+TASK [add ssh directory] *******************************************************
+[0m[0m[0;33mchanged: [backup][0m
+[0m[0m
+TASK [add ssh key] *************************************************************
+[0m[0m[0;33mchanged: [backup][0m
+[0m[0m
+TASK [change owner of repository] **********************************************
+[0m[0m[0;32mok: [backup][0m
+[0m[0m
+PLAY [server | Install and configure server] ***********************************
+[0m[0m
+TASK [Gathering Facts] *********************************************************
+[0m[0m[0;32mok: [server][0m
+[0m[0m
+TASK [get backup server pub key] ***********************************************
+[0m[0m[0;33mchanged: [server][0m
+[0m[0m
+TASK [add backup server to known hosts] ****************************************
+[0m[0m[0;33mchanged: [server][0m
+[0m[0m
+TASK [init backup repository] **************************************************
+[0m[0m[0;33mchanged: [server][0m
+[0m[0m
+PLAY RECAP *********************************************************************
+[0m[0m[0;33mbackup[0m                     : [0;32mok=7   [0m [0;33mchanged=5   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mserver[0m                     : [0;32mok=4   [0m [0;33mchanged=3   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[0m]0;pavel@pavel-ubuntu: ~/otus/backup[01;32mpavel@pavel-ubuntu[00m:[01;34m~/otus/backup[00m$ vagrant upssh server
+Last login: Tue May 12 18:42:49 2020 from 10.0.2.2
+]0;vagrant@server:~[?1034h[vagrant@server ~]$ tail -f /var/log/borgbackup.log
+{"name": "borg.output.stats", "time": 1589309226.6209192, "message": "Number of files: 1688", "levelname": "INFO", "type": "log_message"}
+{"name": "borg.output.stats", "time": 1589309226.6210215, "message": "Utilization of max. archive size: 0%", "levelname": "INFO", "type": "log_message"}
+{"name": "borg.output.stats", "time": 1589309226.6211236, "message": "------------------------------------------------------------------------------", "levelname": "INFO", "type": "log_message"}
+{"name": "borg.output.stats", "time": 1589309226.6212265, "message": "                       Original size      Compressed size    Deduplicated size", "levelname": "INFO", "type": "log_message"}
+{"name": "borg.output.stats", "time": 1589309226.621328, "message": "This archive:               27.79 MB             13.19 MB             11.57 MB", "levelname": "INFO", "type": "log_message"}
+{"name": "borg.output.stats", "time": 1589309226.6214297, "message": "All archives:               27.79 MB             13.19 MB             11.57 MB", "levelname": "INFO", "type": "log_message"}
+{"name": "borg.output.stats", "time": 1589309226.6215303, "message": "", "levelname": "INFO", "type": "log_message"}
+{"name": "borg.output.stats", "time": 1589309226.6216307, "message": "                       Unique chunks         Total chunks", "levelname": "INFO", "type": "log_message"}
+{"name": "borg.output.stats", "time": 1589309226.6217315, "message": "Chunk index:                    1269                 1684", "levelname": "INFO", "type": "log_message"}
+{"name": "borg.output.stats", "time": 1589309226.6218317, "message": "------------------------------------------------------------------------------", "levelname": "INFO", "type": "log_message"}
+^C
+]0;vagrant@server:~[vagrant@server ~]$ exit
+logout
+Connection to 127.0.0.1 closed.
+]0;pavel@pavel-ubuntu: ~/otus/backup[01;32mpavel@pavel-ubuntu[00m:[01;34m~/otus/backup[00m$ exit
+exit
+
+Script done on 2020-05-12 21:47:55+0300
